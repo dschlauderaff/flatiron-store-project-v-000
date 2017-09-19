@@ -7,6 +7,13 @@
   Category.create(title: Faker::Commerce.department)
 end
 
+10.times do
+  User.create(
+    email: Faker::Internet.email,
+    password: "testtest"
+  )
+end
+
 counter = 1
 Item.all.each do |item|
   item.category_id = counter
