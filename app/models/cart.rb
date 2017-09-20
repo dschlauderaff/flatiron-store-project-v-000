@@ -2,6 +2,8 @@ class Cart < ActiveRecord::Base
   has_many :line_items
   has_many :items, through: :line_items
   belongs_to :user
+  has_one :order
+  
 
   def total
     line_items.collect {|li| li.price * li.quantity}.sum

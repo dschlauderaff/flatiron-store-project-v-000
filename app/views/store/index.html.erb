@@ -6,5 +6,5 @@
   </ul>
 </div>
 <% @items.each do |item| %>
-  <p><%= item.title %> | <%= item.price_to_currency %> |  <%= render partial: "items/button_for_add_to_cart", locals: {item: item} %></p>
+  <p><%= item.title %> | <%= number_to_currency(item.price) %> |  <%= render partial: "items/button_for_add_to_cart", locals: {item: item} %></p>
 <% end %>
