@@ -4,8 +4,8 @@
 <% @category.items.each do |item| %>
     <li><%= link_to item.title, item_path(item) %></li>
     <ul>
-        <li><%= "$#{item.price.to_f/100}" %></li>
+        <li><%= item.price_to_currency %></li>
     </ul>
-    <%= render "items/button_for_add_to_cart" %>
+    <%= render partial: "items/button_for_add_to_cart", locals: {item: item} %>
 <% end %>
 </ul>
