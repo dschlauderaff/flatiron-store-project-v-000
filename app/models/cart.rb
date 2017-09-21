@@ -16,6 +16,18 @@ class Cart < ActiveRecord::Base
       line_item.increment!(:quantity)
     else
       self.line_items.build(item: item)
-    end
+    end    
   end
+
+  def checkout
+    line_items.each do |li|
+      adjustment = li.item.inventory - li.quantity
+      li.item.update(inventory: adjustment)
+    end
+    update(status: "submitted")
+  end
+
+  def fulfilled?
+    self.status == "submitted"
+  end 
 end
